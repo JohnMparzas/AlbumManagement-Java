@@ -1,0 +1,169 @@
+//giannis mparzas 2765
+//alexandros kapenis 2713
+UseCase:SelidesCreate
+ID:UC01
+Actor:User
+Precodition:date,name,type,keys,text,path
+Flow of events:
+		1.The use case begin when the user selects “create a page”
+	        2.The system ask the user what kind of page want to create 
+		3.If type is photo 
+			3.1.The system ask the user  for date ,name, path and key
+		4.If type is empty  
+			4.1.The system ask the user for date,key
+		5.If type is text
+			5.1.The system ask the user for date ,name ,key and text 
+		6.If type is title 
+			6.1.The system ask the user for date ,name, key
+		7.The system create the page 
+		8.The system check the informations from the user
+		9.If are false 
+			9.1.The system prints an error message
+			9.2.The use case ends
+		10.The system ask the user  for the name of the album 
+		11.If name  exist
+			11.1.The system add the page in the album
+		12.Else
+			12.1.The system print an error message
+		13.The use case ends
+Postcodition: The system create a page and put it in an album
+
+UseCase: AlbumCreateBasic
+ID:UC02
+Actor:User
+Precoditions:
+Flow of events:  
+		1.The use case begins when the user selects “Create Album”
+		2.the system ask the user for a name 
+		3.The system create the album with name
+		4.The system ask the use if he want to add pages 
+		5.If yes
+			5.1.The system ask the user for the list of pages
+			5.2.The system add the pages to the album
+		6.The system add the album to the list of albums
+		7.The use case ends
+Postcoditions:The system creates a basic album	
+
+Use Case: CreateAlbumbySearch
+id:UC03
+Actor:User
+Precodition:
+flow of events:
+	1.The use case begins when the user search for a key
+	2.the system takes the key
+	3.the use case call the use case AlbumCreateBasic with name the key which the user gave
+	4.the system search the album from the list of albums 
+	5.for every album
+		5.1.for every page
+			5.1.1.the system compare the keys
+			5.1.2.if keys are same
+				5.1.2.1.the system take the page and adds the page to the new album
+	6.the system add the album to the list of albums
+	7.the use case ends
+Postcondition:the system create an album by search
+
+Use Case: PageManager
+id:UC04
+Actor:User
+Precodition:
+flow of events:
+	1.the use case begins when the user selects "change the page"
+	2.the system ask the user for the id key and the name of the page 
+	3.the system find the page
+	4.the system ask the user what want to change in the page and takes the answer
+	5.if the answer is "name"
+		5.1.the system asks the user for the new name
+		5.2.the system change the name
+	6.if the answer is "date"
+		6.1.the system asks the user for the new date
+		6.2.the system change the date
+	7.if the answer is "key"
+		7.1.the system asks the user for the new key
+		7.2.the system change the key
+	8.if the answer is "text"
+		8.1.the system asks the user for the new text
+		8.2.the system change the text
+	9.if the answer is "path"	
+		9.1.the system asks the user for the new path
+		9.2.the system change the path
+	10.if the answer is "type"
+		10.1.the system asks for the new type
+		10.2.if the type isnt the same with previous
+			10.2.1.if the type is "photo"
+				10.2.1.1.the system takes the  path from user
+				10.2.1.2.the system change the type to photo
+				10.2.1.3.the system change the path
+				10.2.1.4.the system assigned null to text
+			10.2.2.if te type is"empty"
+				10.2.2.1.the system change the type to empty 
+				10.2.2.2.the system assigned text and path to null
+			10.2.3.if the answer is "title"
+				10.2.3.1.the system change the type to title
+				10.2.3.2.the system assigned text and path to null
+				10.2.3.3.the system asks the user for the name
+				10.2.3.4.the system changes the name
+			10.2.4.if the type is "text"
+				10.2.4.1.the sytem change the type to text
+				10.2.4.2.the system asks the user for a text
+				10.2.4.3.the system change the text
+				10.2.4.4.the system assigned the path to null
+		10.3.else
+			10.3.1.the system print an error message
+			10.3.2.the use case ends
+Postcondition:The system change the elements of the page
+	
+Use Case AlbumViewer 
+id:UC05
+Actor:User
+Precodition:
+flow of events:
+	1.the use case begins when the user selects "view Album"
+	2.for every Album in the list:
+		2.1.the system print the album
+	3.the use case ends
+Postcoditon:the system prints all the album
+UseCase:PageViewer
+Actor:user
+ID:UC06
+Precoditions:
+Flow of events:  
+		1.The use case begins when the user selects “print pages”
+		2.The system ask the user for the name of the album
+		3.For every album in the list of albums 
+			3.1.If the i-album has the name that user gave
+				3.1.1.The system take the album
+		4.The system ask the user if he want to print pages in order or by date 
+		5.If the anwser is “date”
+			5.1.The system sorts the pages by date 
+			5.2.The system print  the pages
+			5.3.The use case ends 
+		6.if the answer is "date of entry"
+			6.1.For every page of the album
+				6.2.The system print the page
+		7.The use case ends
+Postcoditions:The system prints the pages of an album
+
+
+Use Case Exit
+id:UC07
+Actor:user
+Precodition:
+flow of events: 
+	1.the use case begins when the user select "Exit"
+	2.the system ask the user if he want to exit
+	3.if the answer is "Yes"
+		3.1.the system exit
+	4.the use case ends
+Postcodition:exit of the system
+Use Case: AddpageinAlbum
+id:UC08
+Precodition: give a page 
+flow of events: 
+	1.the system take the page from user
+	2.the system ask the user the name of album that he want to add the page
+	3.the system search the album from the list of albums
+	4.the system add the page in the album 
+	5.the system return the album in the list of album
+	6.the use case end
+Postcodition:the system add the page in the album that user gives
+ 

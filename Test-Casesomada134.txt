@@ -1,0 +1,64 @@
+TestCase: SelidesCreateTest 
+ID:TC01
+1.for every type of page: photo, text, title, empty 
+1.1. The system give to the Use Case SelidesCreate the necessary 
+information to create the pages 
+2.The system checks if every page created correctly 
+3. The system prints an error massage if the information are wrong 
+4. The system calls the Use Case AlbumCreateBasic and give the name “name1” of 
+5.The system checks if the album created correctly and prints appropriate message 
+6.The system give to SelidesCreateTest a name of album that doesnt exist 
+7.The system checks if the Error massage prints correctly when the name does not 
+exist in the albums 
+8.The system give to SelidesCreate the name “name1” of album 
+9.The system checks if the page get in the album with name “name1” and prints an 
+appropriate massage 
+TestCase: AlbumCreateBasicTest 
+ID:TC02
+1.The system gives the details to the UseCase SelidesCreate and create a page 
+2.The system calls the UseCase AlbumCreateBasic with name “name2” and creates 
+an album 
+3.The system gives the answer yes to the UseCase AlbumCreateBasic 
+4.The system checks if the page exist in the album and prints an appropriate 
+massage 
+TestCase:CreateAlbumBySearchTest 
+ID:TC03
+1.The system gives to the UseCase AlbumCreateBySearch a key 
+2.The system checks in an album exist with that key in the list of albums and prints 
+an appropriate massage
+
+TestCase:PAgeManagerTest 
+ID: TC04
+1.The system give to the UseCase PageManager the ID and a name 
+2.For each one of : date, text, path, name , key,type 
+2.1 The system give answers each on of them to the UseCase PageManager 
+2.2 the System gives the necessary information’s for this type to the 
+UseCase PageManager 
+3.The system searchs for the page and checks if changes is correct and prints an 
+appropriate massage 
+4.The system calls the UseCase PageManager and give the changed page 
+5.The system answers type to the UseCase PageManager 
+6.The system give to the UseCase PageManager the same type 
+7.tthe system checks if the error massage printed correctly and print an appropriate 
+massage 
+TestCase:AlbumViewerTest 
+ID:TC05
+1.The system calls the UseCase AlbumVIewer and checks if prints the album 
+correctly 
+2.The system prints an appropriate massage for every condition 
+TestCase:PageViewer 
+ID:TC06
+1.The system give an album from the list of albums to the UseCase PageVierwer 
+2.The systemgive answer “date” to the UseCase PageViewer 
+3.The system checks if the pages printed correctly by date and prints an appropriate 
+massage 
+4.The system give an album from the list of albums to the UseCase PageVierwer 
+5.The system give answer “date of entry” to the UseCase PageViewer 
+6.The system checks if the pages printed correctly by date of entry and prints an 
+appropriate massage
+
+TestCase:ExitTest 
+ID:TC07 
+1.the system calls the UC Exit and answers “yes” 
+2.The system checks if the system exit properly and prints an appropriate massage 
+
